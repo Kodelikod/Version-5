@@ -2,6 +2,7 @@ package View;
 import Controller.ControllerCustomer;
 import Controller.ControllerEmployee;
 import Controller.ControllerManager;
+import Controller.Scan;
 
 import java.text.ParseException;
 import java.util.Scanner;
@@ -11,15 +12,13 @@ public class ViewEmployee {
         public void employeeMenu(ControllerEmployee controllerEmployee, ControllerManager controllerManager,
                                  ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
-            Scanner input = new Scanner(System.in);
+            Scan.output("Please insert your password: ");
 
-            System.out.println("Please insert your password: ");
-
-            String password = input.nextLine();
+            String password = Scan.ScanLine();
 
             if(password.equals("password123")){
-                System.out.println("Employee Screen - Type one of the options below:");
-                System.out.println(
+                Scan.output("Employee Screen - Type one of the options below:");
+                Scan.output(
                         "1. Register a game"+"\n"+
                                 "2. Remove a game"+"\n"+
                                 "3. Register a customer"+"\n"+
@@ -29,8 +28,8 @@ public class ViewEmployee {
                                 "7. Return to Main Menu");
                 //maybe add message of current amount of membership requests, and add an option to view them?
 
-                int employeeOptionDigit = input.nextInt();
-                input.nextLine();
+                int employeeOptionDigit = Scan.ScanInt();
+                Scan.ScanLine();
 
                 switch (employeeOptionDigit) {
                     case 1: controllerEmployee.registerGame();
@@ -47,12 +46,12 @@ public class ViewEmployee {
                     break;
                     case 7: viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
                     break;
-                    default: System.out.println("Your inserted option's number is not valid, please insert " +
+                    default: Scan.output("Your inserted option's number is not valid, please insert " +
                             "a number between 1 - 7.");
                 }
 
             }else {
-                System.out.println("Invalid Password");
+                Scan.output("Invalid Password");
                 viewMain.mainMenu(controllerEmployee,controllerManager,controllerCustomer);
             }
 

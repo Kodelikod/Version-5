@@ -80,9 +80,8 @@ public class ControllerCustomer {
 
     //Method for calculating how many days the customer rented a game. Private because this is not used in main.
     private long daysBetween() throws ParseException {
-        Scanner input = new Scanner(System.in);
         Scan.output("Enter the date of when you rented the game dd/MM/yyyy:");
-        String dateReturn = input.nextLine();
+        String dateReturn = Scan.ScanLine();
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateReturn);
         long interval = new Date().getTime() - date.getTime();
         return TimeUnit.DAYS.convert(interval, TimeUnit.MILLISECONDS);
@@ -190,7 +189,7 @@ public class ControllerCustomer {
         //        } else if (membership.equals("Premium") && (get.BorrowedItems <=7 ) ){ // hur skriva??
         //            set.BorrowedItems =+1;// Hur skriva??
         //        } else {
-        //            System.out.println("Sorry, you have rented above your membership level. You need to return an item before you can rent more.");
+        //            Scan.output("Sorry, you have rented above your membership level. You need to return an item before you can rent more.");
         //        } return null;
         //    }
 
@@ -276,13 +275,13 @@ public class ControllerCustomer {
     }
 
   //  public void askForMembershipStatus () { //fråga om id och ta upp vilket membership kunden har
-  //      System.out.println("Please enter your ID:");
+  //      Scan.output("Please enter your ID:");
   //      int userId = input.nextInt();
   //
   //      for (int i = 0; i < customerList.size(); i++){ // varför funkar inte länk mellan klasserna?
-  //          System.out.println(customerList.get(i).membership); // ta upp membership status för den kunden
+  //          Scan.output(customerList.get(i).membership); // ta upp membership status för den kunden
   //      }
-  //      System.out.println("You have not entered your  id correctly, please try again.");
+  //      Scan.output("You have not entered your  id correctly, please try again.");
   //      askForMembershipStatus();
   //  }
   //      return null;
@@ -290,7 +289,7 @@ public class ControllerCustomer {
   //  //  for (ModelCustomer customer : this.customerList) {
   //  //    if (customer.getMembership() == userId) {
   //  //     return membership;
-  //  //    System.out.println("Please enter your membership status: ");
+  //  //    Scan.output("Please enter your membership status: ");
   //  //  String membershipStatus = input.nextLine();
 
 

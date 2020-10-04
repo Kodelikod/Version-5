@@ -103,7 +103,7 @@ public class ControllerEmployee {
             if (getAllCustomers().get(i).getUserId() == idRemoval) { //...account with same userID as the one
                 // given by user
                 allCustomers.remove(i); // remove when found
-                System.out.println("User with ID " + idRemoval + " successfully removed."); //... then its removed, let the user know
+                Scan.output("User with ID " + idRemoval + " successfully removed."); //... then its removed, let the user know
                 isTargetIdFound = true; // here it means stop because we asked to iterate
                 // over the array JUST in case that the isTargetFound is true.
             }
