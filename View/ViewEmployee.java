@@ -27,6 +27,7 @@ public class ViewEmployee {
                                 "5. Show total rent profit"+"\n" +
                                 "6. View all games"+"\n"+
                                 "7. Return to Main Menu");
+                //maybe add message of current amount of membership requests, and add an option to view them?
 
                 int employeeOptionDigit = input.nextInt();
                 input.nextLine();
