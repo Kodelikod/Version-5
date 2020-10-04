@@ -6,8 +6,9 @@ import Controller.Scan;
 
 import java.text.ParseException;
 import java.util.Scanner;
+import java.util.logging.ConsoleHandler;
 
-    public class ViewMain {
+public class ViewMain {
         private ViewManager viewManager = new ViewManager();
         private ViewEmployee viewEmployee = new ViewEmployee();
         private ViewCustomer viewCustomer = new ViewCustomer();
@@ -42,6 +43,7 @@ import java.util.Scanner;
                         viewCustomer.customerMenu(controllerEmployee, controllerManager, controllerCustomer, this);
                         break;
                     case "X":
+                        Scan.closeScanner();
                         running = false;
                         break;
                     default:
