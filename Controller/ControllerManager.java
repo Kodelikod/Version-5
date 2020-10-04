@@ -11,10 +11,10 @@ public class ControllerManager {
     private ModelEmployee newEmployee = new ModelEmployee(0,"",0,"",0);
     private ArrayList<ModelEmployee> allEmployee = new ArrayList<>();
 
-    public ControllerManager(ModelEmployee newEmployee, ArrayList<ModelEmployee> allEmployee) {
-        this.newEmployee = newEmployee;
-        this.allEmployee = allEmployee;
-    }
+ //   public ControllerManager(ModelEmployee newEmployee, ArrayList<ModelEmployee> allEmployee) {
+ //       this.newEmployee = newEmployee;
+ //       this.allEmployee = allEmployee;
+ //   }
 
 
     public ModelEmployee getNewEmployee() { return newEmployee; }

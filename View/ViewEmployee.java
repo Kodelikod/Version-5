@@ -1,13 +1,14 @@
 package View;
 import Controller.ControllerCustomer;
 import Controller.ControllerEmployee;
+import Controller.ControllerManager;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class ViewEmployee {
 
-        public void employeeMenu(ControllerEmployee controllerEmployee, ControllerGame controllerGame,
+        public void employeeMenu(ControllerEmployee controllerEmployee, ControllerManager controllerManager,
                                  ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
             Scanner input = new Scanner(System.in);
@@ -31,19 +32,19 @@ public class ViewEmployee {
                 input.nextLine();
 
                 switch (employeeOptionDigit) {
-                    case 1: controllerGame.registerGame();
+                    case 1: controllerEmployee.registerGame();
                     break;
-                    case 2: controllerGame.removeGame();
+                    case 2: controllerEmployee.removeGame();
                     break;
-                    case 3: controllerCustomer.registerCustomer();
+                    case 3: controllerEmployee.registerCustomer();
                     break;
-                    case 4: controllerCustomer.removeCustomer();
+                    case 4: controllerEmployee.removeCustomer();
                     break;
-                    case 5: controllerGame.printTotalRentProfit();
+                    case 5: controllerEmployee.printTotalRentProfit();
                     break;
-                    case 6: controllerGame.viewGameList();
+                    case 6: controllerEmployee.viewGameList();
                     break;
-                    case 7: viewMain.mainMenu(controllerEmployee, controllerGame, controllerCustomer);
+                    case 7: viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
                     break;
                     default: System.out.println("Your inserted option's number is not valid, please insert " +
                             "a number between 1 - 7.");
@@ -51,7 +52,7 @@ public class ViewEmployee {
 
             }else {
                 System.out.println("Invalid Password");
-                viewMain.mainMenu(controllerEmployee,controllerGame,controllerCustomer);
+                viewMain.mainMenu(controllerEmployee,controllerManager,controllerCustomer);
             }
 
         }

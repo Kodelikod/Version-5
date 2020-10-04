@@ -1,12 +1,13 @@
 package View;
 import Controller.ControllerCustomer;
 import Controller.ControllerEmployee;
+import Controller.ControllerManager;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class ViewManager{
-    public void managerMenu(ControllerEmployee controllerEmployee, ControllerGame controllerGame,
+    public void managerMenu(ControllerEmployee controllerEmployee, ControllerManager controllerManager,
                             ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
     Scanner input = new Scanner(System.in);
@@ -25,20 +26,20 @@ public class ViewManager{
 
             int optionM = input.nextInt();
             if (optionM == 1) {
-                controllerEmployee.registerEmployee();
+                controllerManager.registerEmployee();
             } else if (optionM == 2) {
-                controllerEmployee.removeEmployee();
+                controllerManager.removeEmployee();
             } else if (optionM == 3) {
-                controllerEmployee.viewEmployeeList();
+                controllerManager.viewEmployeeList();
             } else if (optionM == 4) {
-                controllerEmployee.employeeNetSalary();
+                controllerManager.employeeNetSalary();
             } else if (optionM == 5) {
-                controllerEmployee.employeeBonus();
+                controllerManager.employeeBonus();
             } else if (optionM == 6) {
-                viewMain.mainMenu(controllerEmployee, controllerGame, controllerCustomer);
+                viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
             } else {
                 System.out.println("Invalid input, please try again");
-                managerMenu(controllerEmployee, controllerGame, controllerCustomer, viewMain);
+                managerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
             }
         } else {
             System.out.println("Invalid password");

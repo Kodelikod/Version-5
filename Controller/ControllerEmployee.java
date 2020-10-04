@@ -1,5 +1,6 @@
 package Controller;
 import Model.*;
+import Controller.*;
 
 import java.util.ArrayList;
 
@@ -19,24 +20,25 @@ public class ControllerEmployee {
     private ModelSong newSong = new ModelSong("",0);
     private ModelAlbum newAlbum = new ModelAlbum(0,"","",0,true,"","",0,newSong);
 
-
+     //constructor method is wrong here, all parameters in the constructor
+    // method will be expected everytime this controller is called, which causes issues in Main
     // Constructor:
-    public ControllerEmployee(double totalRent,ArrayList<ModelSuperItem> allItems,
-                              ArrayList<ModelGame> allGames,ArrayList<ModelAlbum> allAlbum,
-                              ArrayList<ModelSong> newSongAlbum,
-                              ArrayList<ModelCustomer> allCustomers, ModelCustomer newCustomer,
-                              ModelGame newGame,ModelSong newSong,ModelAlbum newAlbum) {
-        this.totalRent = totalRent;
-        this.allItems = allItems;
-        this.allGames = allGames;
-        this.allAlbum = allAlbum;
-        this.newSongAlbum = newSongAlbum;
-        this.allCustomers = allCustomers;
-        this.newCustomer= newCustomer;
-        this.newGame = newGame;
-        this.newSong = newSong;
-        this.newAlbum = newAlbum;
-    }
+  // public ControllerEmployee(double totalRent,ArrayList<ModelSuperItem> allItems,
+  //                           ArrayList<ModelGame> allGames,ArrayList<ModelAlbum> allAlbum,
+  //                           ArrayList<ModelSong> newSongAlbum,
+  //                           ArrayList<ModelCustomer> allCustomers, ModelCustomer newCustomer,
+  //                           ModelGame newGame,ModelSong newSong,ModelAlbum newAlbum) {
+  //     this.totalRent = totalRent;
+  //     this.allItems = allItems;
+  //     this.allGames = allGames;
+  //     this.allAlbum = allAlbum;
+  //     this.newSongAlbum = newSongAlbum;
+  //     this.allCustomers = allCustomers;
+  //     this.newCustomer= newCustomer;
+  //     this.newGame = newGame;
+  //     this.newSong = newSong;
+  //     this.newAlbum = newAlbum;
+  // }
 
     //Setters / Getters:
 
@@ -250,6 +252,21 @@ public class ControllerEmployee {
             if (album.getId() == id) {
                 return album;
             }
+        }
+        return null;
+    }
+
+    //method to find customer by userID
+    public ModelCustomer findCustomerById(int userId){
+
+
+
+        for (int i=0; i<allCustomers.size(); i++){
+
+            if(allCustomers.get(i).getUserId()==userId){
+                return allCustomers.get(i);
+            }
+
         }
         return null;
     }
