@@ -27,27 +27,21 @@ public class ControllerManager {
 
     public void viewEmployeeList() {
         for (int i = 0; i < getAllEmployee().size(); i++) {
-            Scan.output(getAllEmployee().get(i).toString());
+            System.out.println(getAllEmployee().get(i).toString());
         }
     }
     // Method register employee
     public void registerEmployee() {
 
         newEmployee.setUserId(idGenerator());
-        Scan.output("Creating an Employee. Please type the Employee's: ");
-        Scan.output("ID: " + newEmployee.getUserId());
-        Scan.output("Name:");
-        newEmployee.setName(Scan.ScanLine());
-        Scan.output("Birth year: ");
-        newEmployee.setBirthYear(Scan.ScanInt());
-        Scan.ScanLine();
-        Scan.output("Address:");
-        newEmployee.setAddress(Scan.ScanLine());
-        Scan.output("Monthly gross salary:");
-        newEmployee.setGrossSalary(Scan.ScanDouble());
-        Scan.ScanLine();
+        System.out.println("Creating an Employee. Please type the Employee's: ");
+        System.out.println("ID: " + newEmployee.getUserId());
+        newEmployee.setName(Scan.readLine("Name:"));
+        newEmployee.setBirthYear(Scan.readInt("Birth year: "));
+        newEmployee.setAddress(Scan.readLine("Address:"));
+        newEmployee.setGrossSalary(Scan.readDouble("Monthly gross salary:"));
         allEmployee.add(newEmployee);
-        Scan.output("You have successfully added a new employee: \n" + newEmployee);
+        System.out.println("You have successfully added a new employee: \n" + newEmployee);
 
     }
     //Method for generating unique ID
@@ -69,9 +63,7 @@ public class ControllerManager {
     //Method remove employee
     public void removeEmployee () {
 
-        Scan.output("Removing employee account \nEnter employee ID: ");
-        int idRemoval = Scan.ScanInt();
-        Scan.ScanLine();
+        int idRemoval = Scan.readInt("Removing employee account \nEnter employee ID: ");
 
         boolean isTargetIdFound = false;
 
@@ -79,13 +71,13 @@ public class ControllerManager {
             if (allEmployee.get(i).getUserId() == idRemoval) { //...account with same userID as the one
                 // given by user
                 allEmployee.remove(i); // remove when found
-                Scan.output("User with ID " + idRemoval + " successfully removed.");
+                System.out.println("User with ID " + idRemoval + " successfully removed.");
                 //... then its removed, let the user know
                 isTargetIdFound = true;
             }
         }
         if (!isTargetIdFound){
-            Scan.output("Employee with ID " + idRemoval + " not found");
+            System.out.println("Employee with ID " + idRemoval + " not found");
         }
     }
 
@@ -93,42 +85,36 @@ public class ControllerManager {
     public void employeeNetSalary() {
 
 
-        Scan.output("Please type your employees name:");
-        String name = Scan.ScanLine();
+        String name = Scan.readLine("Please type your employees name:");
 
-        Scan.output("Please type hours worked in a year:");
-        double hPerYear = Scan.ScanDouble(); // declare and store value from numbers, maybe decimal
+        double hPerYear = Scan.readDouble("Please type hours worked in a year:"); // declare and store value from numbers, maybe decimal
 
-        Scan.output("Please enter hourly pay rate SEK:");
-        double hPayRate = Scan.ScanDouble();
-        Scan.ScanLine();
+        double hPayRate = Scan.readDouble("Please enter hourly pay rate SEK:");
 
         double grossPay = hPayRate * hPerYear;
         double netSalaryOver100 = (grossPay * (0.7));
 
         if (grossPay <= 100000) {
-            Scan.output("Gross Pay is less than 100.000 SEK per year, therefore the Net Salary is: " + grossPay + " SEK");
+            System.out.println("Gross Pay is less than 100.000 SEK per year, therefore the Net Salary is: " + grossPay + " SEK");
         } else {
-            Scan.output("Gross Pay is more than 100.000 SEK per year and the Net Salary is: " + (netSalaryOver100) + " SEK");
+            System.out.println("Gross Pay is more than 100.000 SEK per year and the Net Salary is: " + (netSalaryOver100) + " SEK");
         }
 
     }
 
     public void employeeBonus() {
 
-        Scan.output("What is the employee's age?  ");
-
-        double age = Scan.ScanInt(); // it will come directly from getAge method.
+        double age = Scan.readInt("What is the employee's age?  "); // it will come directly from getAge method.
         int bonusPac1 = 4000;
         int bonusPac2 = 6000;
         int bonusPac3 = 7500;
 
         if (age < 22) {
-            Scan.output("The employee's bonus salary is " + bonusPac1 + " SEK.");
+            System.out.println("The employee's bonus salary is " + bonusPac1 + " SEK.");
         } else if (age >= 22 && age <= 30) {
-            Scan.output("The employee's bonus salary is " + bonusPac2 + " SEK.");
+            System.out.println("The employee's bonus salary is " + bonusPac2 + " SEK.");
         } else {
-            Scan.output("The employee's bonus salary is " + bonusPac3 + " SEK.");
+            System.out.println("The employee's bonus salary is " + bonusPac3 + " SEK.");
         }
     }
 

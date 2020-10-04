@@ -15,18 +15,18 @@ import java.util.Scanner;
         private boolean running = true;
 
         public void welcome(ControllerEmployee controllerEmployee, ControllerManager controllerManager, ControllerCustomer controllerCustomer) throws ParseException {
-            Scan.output("Main Menu:");
-            Scan.output("Welcome to DART, your good old game rental system. The competition has no steam to keep up");
+            System.out.println("Main Menu:");
+            System.out.println("Welcome to DART, your good old game rental system. The competition has no steam to keep up");
             mainMenu(controllerEmployee, controllerManager, controllerCustomer);
         }
 
         public void mainMenu(ControllerEmployee controllerEmployee, ControllerManager controllerManager, ControllerCustomer controllerCustomer) throws ParseException {
             while(running){
-                Scan.output("\nPlease specify your role by entering one of the options given:");
-                Scan.output ("1. Enter M for Manager");
-                Scan.output ("2. Enter E for Employee");
-                Scan.output ("3. Enter C for Customer");
-                Scan.output ("4. Enter X to exit system");
+                System.out.println("\nPlease specify your role by entering one of the options given:");
+                System.out.println ("1. Enter M for Manager");
+                System.out.println ("2. Enter E for Employee");
+                System.out.println ("3. Enter C for Customer");
+                System.out.println ("4. Enter X to exit system");
 
                 String inputMainMenu = Scan.ScanLine();
 
@@ -45,8 +45,7 @@ import java.util.Scanner;
                         running = false;
                         break;
                     default:
-                        Scan.output("Invalid input, please try again.");
-                        mainMenu(controllerEmployee, controllerManager, controllerCustomer);
+                        System.out.println("Invalid input, please try again.");
                         break;
                 }
             }

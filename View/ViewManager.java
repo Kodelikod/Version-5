@@ -13,17 +13,17 @@ public class ViewManager{
 
 
 
-        Scan.output("Please enter your password:");
-        String passwordM = Scan.ScanLine();
+
+        String passwordM = Scan.readLine("Please enter your password:");
 
         if (passwordM.equals("admin1234")) {
-            Scan.output("Manager Screen - Type one of the options below:");
-            Scan.output("1. Add an employee");
-            Scan.output("2. Remove an employee");
-            Scan.output("3. View all employees");
-            Scan.output("4. Calculate employee net salary");
-            Scan.output("5. Calculate employee salary bonus");
-            Scan.output("6. Return to Main Menu");
+            System.out.println("Manager Screen - Type one of the options below:");
+            System.out.println("1. Add an employee");
+            System.out.println("2. Remove an employee");
+            System.out.println("3. View all employees");
+            System.out.println("4. Calculate employee net salary");
+            System.out.println("5. Calculate employee salary bonus");
+            System.out.println("6. Return to Main Menu");
 
             int optionM = Scan.ScanInt();
             if (optionM == 1) {
@@ -39,11 +39,11 @@ public class ViewManager{
             } else if (optionM == 6) {
                 viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
             } else {
-                Scan.output("Invalid input, please try again");
+                System.out.println("Invalid input, please try again");
                 managerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
             }
         } else {
-            Scan.output("Invalid password");
+            System.out.println("Invalid password");
         }
     }
 }

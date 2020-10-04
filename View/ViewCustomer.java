@@ -13,10 +13,10 @@ public class ViewCustomer {
                                  ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
             //change customer menu so that first options are login and view selection?? and return to main menu of course
-                Scan.output("Customer Screen - Type one of the options below:");
-                Scan.output("1. Rent a game");
-                Scan.output("2. Return a game");
-                Scan.output("3. Return to Main Menu");
+                System.out.println("Customer Screen - Type one of the options below:");
+                System.out.println("1. Rent a game");
+                System.out.println("2. Return a game");
+                System.out.println("3. Return to Main Menu");
                 // on first page after login options should be view return rent review etc
 
                 int userOption = Scan.ScanInt();
@@ -28,7 +28,7 @@ public class ViewCustomer {
                 } else if (userOption == 3) {
                     viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
                 } else {
-                    Scan.output("Invalid input.");
+                    System.out.println("Invalid input.");
                 }
             }
 

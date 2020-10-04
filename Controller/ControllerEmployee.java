@@ -74,28 +74,25 @@ public class ControllerEmployee {
     // Method total rent profit
 
     public void printTotalRentProfit() {
-        Scan.output("The total rent profit is currently: " + totalRent + " SEK");
+        System.out.println("The total rent profit is currently: " + totalRent + " SEK");
     }
 
     ////////////////////////   CUSTOMER  ////////////////////////////
 
     public void registerCustomer() { //A customer has a unique id and a name
 
-        Scan.output("Registering new customer \nEnter name of the customer: ");
+        System.out.println("Registering new customer \nEnter name of the customer: ");
         newCustomer.setUserId(idGenerator());
-        Scan.output("ID: " + newCustomer.getUserId());
-        Scan.output("Name: ");
-        newCustomer.setName(Scan.ScanLine());
+        System.out.println("ID: " + newCustomer.getUserId());
+        newCustomer.setName(Scan.readLine("Name: "));
         allCustomers.add(newCustomer);
-        Scan.output("You have successfully added a new customer:\n" + newCustomer.toString());
+        System.out.println("You have successfully added a new customer:\n" + newCustomer.toString());
     }
 
 
 
     public void removeCustomer(){
-        Scan.output("Removing employee account \nEnter employee ID: ");
-        int idRemoval = Scan.ScanInt();
-        Scan.ScanLine();
+        int idRemoval = Scan.readInt("Removing employee account \nEnter employee ID: ");
 
         boolean isTargetIdFound = false;
 
@@ -103,13 +100,13 @@ public class ControllerEmployee {
             if (getAllCustomers().get(i).getUserId() == idRemoval) { //...account with same userID as the one
                 // given by user
                 allCustomers.remove(i); // remove when found
-                Scan.output("User with ID " + idRemoval + " successfully removed."); //... then its removed, let the user know
+                System.out.println("User with ID " + idRemoval + " successfully removed."); //... then its removed, let the user know
                 isTargetIdFound = true; // here it means stop because we asked to iterate
                 // over the array JUST in case that the isTargetFound is true.
             }
         }
         if (!isTargetIdFound){
-            Scan.output("Employee with ID " + idRemoval + " not found");
+            System.out.println("Employee with ID " + idRemoval + " not found");
 
         }
     }
@@ -118,7 +115,7 @@ public class ControllerEmployee {
 
     public void viewGameList() {
         for (int i = 0; i < getAllGames().size(); i++) {
-            Scan.output(getAllGames().get(i).toString());
+            System.out.println(getAllGames().get(i).toString());
         }
 
     }
@@ -128,24 +125,19 @@ public class ControllerEmployee {
     // <rent status>
     public void registerGame() {
         int gameId = getAllGames().size() + 1;  //ID Generator.
-        Scan.output("Creating a Game. Please type the game’s:");
-        Scan.output("ID:" + gameId);
-        Scan.output("Title:");
-        String title = Scan.ScanLine();
-        Scan.output("Genre:");
-        String genre = Scan.ScanLine();
-        Scan.output("Daily Rent Fee (SEK): ");
-        double dailyRentFee = Scan.ScanDouble();//assigns ID to the number of the arraylist size
+        System.out.println("Creating a Game. Please type the game’s:");
+        System.out.println("ID:" + gameId);
+        String title = Scan.readLine("Title:");
+        String genre = Scan.readLine("Genre:");
+        double dailyRentFee = Scan.readDouble("Daily Rent Fee (SEK): ");//assigns ID to the number of the arraylist size
         // + 1, and adds it to ArrayList ids
         allGames.add(newGame);
         //allItems.add(allGames);
-        Scan.output("You have successfully added:" + "\n" + newGame.toString());
-        Scan.ScanLine();
+        System.out.println("You have successfully added:" + "\n" + newGame.toString());
+
     }
     public void removeGame() {
-        Scan.output("Removing game  \nEnter game ID: ");
-        int idRemoval = Scan.ScanInt();
-        Scan.ScanLine();
+        int idRemoval = Scan.readInt("Removing game  \nEnter game ID: ");
 
         boolean isTargetIdFound = false;
 
@@ -153,20 +145,19 @@ public class ControllerEmployee {
             if (getAllGames().get(i).getId() == idRemoval) { //...account with same userID as the one
                 // given by user
                 allGames.remove(i); // remove when found
-                Scan.output("Gme with ID " + idRemoval + " successfully removed.");//... then its removed, let the user know
+                System.out.println("Gme with ID " + idRemoval + " successfully removed.");//... then its removed, let the user know
                 isTargetIdFound = true;
             }
         }
         if (!isTargetIdFound) {
-            Scan.output("Game with ID " + idRemoval + " not found");
+            System.out.println("Game with ID " + idRemoval + " not found");
         }
     }
 
 
     //Method for finding dailyRentFee in a game from arraylist in Game.
     public ModelGame findGameById() {
-        Scan.output("Enter the ID of the game you wish to return:");
-        int id = Scan.ScanInt();  // Read user input of id
+        int id = Scan.readInt("Enter the ID of the game you wish to return:");  // Read user input of id
 
         for (ModelGame game : this.allGames) {
             if (game.getId() == id) {
@@ -180,52 +171,41 @@ public class ControllerEmployee {
 
     public void viewAlbumList() {
         for (int i = 0; i < getAllAlbum().size(); i++) {
-            Scan.output(getAllAlbum().get(i).toString());
+            System.out.println(getAllAlbum().get(i).toString());
         }
 
    }
     public void addSongs() {
         int albumId = getAllAlbum().size() + 1;  //ID Generator.
-        Scan.output("Adding songs to the album. Please type the song's:");
-        Scan.output("ID:" + albumId);
-        Scan.output("Title:");
-        String title = Scan.ScanLine();
+        System.out.println("Adding songs to the album. Please type the song's:");
+        System.out.println("ID:" + albumId);
+        String title = Scan.readLine("Title:");
         newSongAlbum.add(newSong);
-        Scan.output("You have successfully added:" + "\n" + newAlbum.toString());
-        Scan.ScanLine();
+        System.out.println("You have successfully added:" + "\n" + newAlbum.toString());
     }
 
     public void registerAlbum() {
         int albumId = getAllAlbum().size() + 1;  //ID Generator.
-        Scan.output("Creating a Album. Please type the Album's:");
-        Scan.output("ID:" + albumId);
-        Scan.output("Title:");
-        String title = Scan.ScanLine();
-        Scan.output("Artist:");
-        String artist = Scan.ScanLine();
-        Scan.output("Genre:");
-        String genre = Scan.ScanLine();
-        Scan.output("Released:");
-        String releasedYear = Scan.ScanLine();
-        Scan.output("Price: ");
-        double price = Scan.ScanDouble();
-        Scan.output("Daily Rent Fee (SEK): ");
-        double dailyRentFee = Scan.ScanDouble();//assigns ID to the number of the arraylist size
+        System.out.println("Creating a Album. Please type the Album's:");
+        System.out.println("ID:" + albumId);
+        String title = Scan.readLine("Title:");
+        String artist = Scan.readLine("Artist:");
+        String genre = Scan.readLine("Genre:");
+        String releasedYear = Scan.readLine("Released:");
+        double price = Scan.readDouble("Price: ");
+        double dailyRentFee = Scan.readDouble("Daily Rent Fee (SEK): ");//assigns ID to the number of the arraylist size
         // + 1, and adds it to ArrayList ids
         addSongs();
         allAlbum.add(newAlbum);
         //allItems.add(allAlbum);
-        Scan.output("You have successfully added:" + "\n" + newAlbum.toString());
-        Scan.ScanLine();
+        System.out.println("You have successfully added:" + "\n" + newAlbum.toString());
     }
 
 
 
 
     public void removeAlbum() {
-        Scan.output("Removing Album  \nEnter Album ID: ");
-        int idRemoval = Scan.ScanInt();
-        Scan.ScanLine();
+        int idRemoval = Scan.readInt("Removing Album  \nEnter Album ID: ");
 
         boolean isTargetIdFound = false;
 
@@ -234,19 +214,18 @@ public class ControllerEmployee {
             if (getAllAlbum().get(i).getId() == idRemoval) { //...account with same userID as the one
                 // given by user
                 allAlbum.remove(i); // remove when found
-                Scan.output("Album with ID " + idRemoval + " successfully removed.");//... then its
+                System.out.println("Album with ID " + idRemoval + " successfully removed.");//... then its
                 // removed, let the user know
                 isTargetIdFound = true;
             }
         }
         if (!isTargetIdFound) {
-            Scan.output("Album with ID " + idRemoval + " not found");
+            System.out.println("Album with ID " + idRemoval + " not found");
         }
     }
 
     public ModelAlbum findAlbumById() {
-        Scan.output("Enter the ID of the album you wish to return:");
-        int id = Scan.ScanInt();  // Read user input of id
+        int id = Scan.readInt("Enter the ID of the album you wish to return:");  // Read user input of id
 
         for (ModelAlbum album : this.allAlbum) {
             if (album.getId() == id) {
