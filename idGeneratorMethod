@@ -1,0 +1,18 @@
+    public int generateId(){
+
+        int ID = 1000;
+        // first we need to set the first element Id when the array is empty, the id will be equal too 1000:
+        if(ArrayListName.size() == 0){
+            return ID; 
+         // otherwise and if the ArrayList has already some elements then we will get the last elemnt's VALUE in the array and NOT the POSITION. 
+        }else{
+            for (int i = 0; i < ArrayListName.size(); i++) { // Iterating through the Array to catch the last element.
+                if( i == (ArrayListName.size() - 1)){ // here we are catching exactly the last element in the ArrayList.
+                    ID = ArrayListName.get(i).getID() + 1; // And now we are accessing it's value "get(i)" and adding +1 to it.  
+                    return ID;  
+                }
+            }
+        }
+
+      return ID;
+    }

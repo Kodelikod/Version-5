@@ -15,6 +15,7 @@ public class ControllerEmployee {
     private ArrayList<ModelAlbum>  allAlbum = new ArrayList<>();
     private ArrayList<ModelSong> newSongAlbum = new ArrayList<>();
     private ArrayList<ModelCustomer> allCustomers = new ArrayList<>();
+    private ArrayList<ModelCustomer> membershipQueue = new ArrayList<>(); // create setters & getters
     private ModelCustomer newCustomer = new ModelCustomer("", 0);
     private ModelGame newGame = new ModelGame(0,"","",0,true);
     private ModelSong newSong = new ModelSong("",0);
@@ -56,6 +57,7 @@ public class ControllerEmployee {
     public void setTotalRent(double totalRent) { this.totalRent = totalRent; }
 
 
+
     public int idGenerator() {// to find four-digit number
         int idleId = 2000;
         for (int i = 0; i < getAllCustomers().size(); i++) { //search through entire arraylist of
@@ -88,8 +90,6 @@ public class ControllerEmployee {
         allCustomers.add(newCustomer);
         System.out.println("You have successfully added a new customer:\n" + newCustomer.toString());
     }
-
-
 
     public void removeCustomer(){
         int idRemoval = Scan.readInt("Removing employee account \nEnter employee ID: ");
@@ -201,9 +201,6 @@ public class ControllerEmployee {
         System.out.println("You have successfully added:" + "\n" + newAlbum.toString());
     }
 
-
-
-
     public void removeAlbum() {
         int idRemoval = Scan.readInt("Removing Album  \nEnter Album ID: ");
 
@@ -237,17 +234,20 @@ public class ControllerEmployee {
 
     //method to find customer by userID
     public ModelCustomer findCustomerById(int userId){
-
-
-
         for (int i=0; i<allCustomers.size(); i++){
-
             if(allCustomers.get(i).getUserId()==userId){
                 return allCustomers.get(i);
             }
 
         }
         return null;
+    }
+
+// Method for managing upgraded membership requests
+    //public void manageMembership() { creating an arraylist with customer in line
+        //viewCustomerList();
+
+
     }
 
 

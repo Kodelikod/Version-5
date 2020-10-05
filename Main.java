@@ -12,8 +12,8 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 
       //  ControllerAlbum controllerAlbum = new ControllerAlbum();
-        ControllerCustomer controllerCustomer = new ControllerCustomer(); //constructor issue
         ControllerEmployee controllerEmployee = new ControllerEmployee(); //this is the issue mentioned in controller employee with the constructor method the parenthesis becomes red
+        ControllerCustomer controllerCustomer = new ControllerCustomer(controllerEmployee); //constructor issue
         ControllerManager controllerManager = new ControllerManager(); //constructor issue
       //  ControllerGame controllerGame = new ControllerGame();
         ViewMain viewMain = new ViewMain();

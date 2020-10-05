@@ -1,6 +1,8 @@
 package Controller;
 import Model.*;
 import Controller.*;
+import View.ViewCustomer;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 
 public class ControllerCustomer {
 
-
     private double totalRent; //?? total rent of what??
     private ArrayList<ModelGame> allGames = new ArrayList<ModelGame>();
     private ArrayList<ModelAlbum> allAlbum = new ArrayList<>();
+    private ControllerEmployee controllerEmployee;
 
   //  public ControllerCustomer(double totalRent, ArrayList<ModelGame> allGames,
   //                            ArrayList<ModelAlbum> allAlbum) {
@@ -23,11 +25,14 @@ public class ControllerCustomer {
   //      this.totalRent = totalRent;
   //  }
 
+    public ControllerCustomer (ControllerEmployee controllerEmployee) {
+        this.controllerEmployee = controllerEmployee;
+    }
+
     public ArrayList<ModelGame> getAllGames() { return allGames; }
     public void setAllGames(ArrayList<ModelGame> allGames) { this.allGames = allGames; }
     public ArrayList<ModelAlbum> getAllAlbum() { return allAlbum; }
     public void setAllAlbum(ArrayList<ModelAlbum> allAlbum) { this.allAlbum = allAlbum; }
-
 
     public void viewGameList() {
         for (int i = 0; i < getAllGames().size(); i++) {
@@ -37,8 +42,6 @@ public class ControllerCustomer {
 
  //public void rentingItem() {
  //    viewGameList();
- //
- //
  //    System.out.println("Please insert the game ID for the game you want to rent: ");
  //    int gameSearchID = Scan.ScanInt();
  //    Scan.ScanLine();
@@ -78,15 +81,15 @@ public class ControllerCustomer {
 
 
     //Method for calculating how many days the customer rented a game. Private because this is not used in main.
-    private long daysBetween() throws ParseException {
+    private long getDaysBetween() throws ParseException {
         String dateReturn = Scan.readLine("Enter the date of when you rented the game dd/MM/yyyy:");
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateReturn);
         long interval = new Date().getTime() - date.getTime();
         return TimeUnit.DAYS.convert(interval, TimeUnit.MILLISECONDS);
     }
 
-    private double totalRentFee(long daysBetween, double dailyRentFee) { //what is this method for?
-        double totalRentFee = daysBetween * dailyRentFee;
+    private double totalRentFee(long getDaysBetween, double dailyRentFee) { //what is this method for?
+        double totalRentFee = getDaysBetween * dailyRentFee;
 
        // System.out.println("You must pay: " + totalRentFee + "SEK");
         return totalRentFee;
@@ -94,7 +97,7 @@ public class ControllerCustomer {
 
     // Method for calculating total rent, used for calculating rent profit
     public void returnGame(ModelCustomer customer) throws ParseException { //Parse is used in this method to convert a string to long
-        long days = daysBetween();
+        long days = getDaysBetween();
 
         ModelGame game = findGameById();
         game.setAvailable(true); //update game status
@@ -278,21 +281,24 @@ public class ControllerCustomer {
   //  //     return membership;
   //  //  String membershipStatus = input.readLine("Please enter your membership status: ");
 
+//Upgrade membership
+    public void upgradeMembership() {
+        int userID = Scan.readInt("Please enter your customer ID:");
+        ModelCustomer customer = controllerEmployee.findCustomerById(userID);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if (customer.getMembership().equals("regular")) {
+            // add to list for silver membership
+            System.out.println("You have now applied for a Silver membership.");
+        } else if (customer.getMembership().equals("silver")){
+            // add to list for gold membership
+            System.out.println("You have now applied for a Gold membership.");
+        } else if (customer.getMembership().equals("gold")){
+            // add to list for platinum membership
+            System.out.println("You have now applied for a Platinum membership");
+        } else {
+            System.out.println("You can't upgrade your membership.");
+        }
+    }
 }
 
 

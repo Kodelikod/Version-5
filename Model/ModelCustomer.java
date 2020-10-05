@@ -112,9 +112,6 @@ public class ModelCustomer {
         }
     }
 
-
-
-
     @Override
     public String toString() {
         return "ID: " + this.getUserId() + System.lineSeparator() + "Name: " + this.getName() +
