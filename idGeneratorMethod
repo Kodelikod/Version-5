@@ -1,0 +1,16 @@
+    public int generateId(){
+
+        int ID = 1000;
+        if(ArrayListName.size() == 0){
+            return ID;
+        }else{
+            for (int i = 0; i < ArrayListName.size(); i++) {
+                if( i == (ArrayListName.size() - 1)){
+                    ID = ArrayListName.get(i).getID() + 1;
+                    return ID;
+                }
+            }
+        }
+
+      return ID;
+    }
