@@ -19,12 +19,12 @@ public class ViewCustomer {
                 System.out.println("3. Return to Main Menu");
                 // on first page after login options should be view return rent review etc
 
-                int userOption = Scan.readInt();
+                int userOption = Scan.readInt(null);
 
                 if (userOption == 1) { //change to switch bc this will be more than 3 menu options
-                    controllerCustomer.rentItem(/*customer*/);
+                    controllerCustomer.rentItem(null); //create reference for customer
                 } else if (userOption == 2) {
-                    controllerCustomer.returnGame(/*customer*/);
+                    controllerCustomer.returnGame(null); //create reference for customer instead of null
                 } else if (userOption == 3) {
                     viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
                 } else {

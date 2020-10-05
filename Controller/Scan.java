@@ -34,13 +34,17 @@ public class Scan {
     }
 
     public static int readInt(String output) {
-        System.out.println(output);
+        System.out.println(output);  //shouldn't there be a nextLine after nextInt bc if user input an int and naturally presses enter and all that?
         return scan.nextInt();
     }
 
     public static double readDouble(String output) {
         System.out.println(output);
         return scan.nextDouble();
+    }
+
+    public static String EOL(){ //END OF LINE separator
+        return System.lineSeparator();
     }
 
     public static void closeScanner() {
