@@ -2,6 +2,11 @@ package Model;
 
 public class ModelSuperItem {
 
+    //The totalRentFee calculation for returning a specific game should be in the game and not in the controller.
+    //The game object has the information of its daily price, so it should be calculated in the Game object.
+    //I suggest adjusting that in your GameController class. This argument also applies to Employee and the calculation
+    //of its netSalary in the EmployeeController.
+
         // Attributes in Common (Album/Game)
         // <ID> : <Title> (<genre>). <daily rent>. Status: <rent status> (Ratings)
         private int Id;
@@ -10,6 +15,11 @@ public class ModelSuperItem {
         private double dailyRentFee;
         private boolean available = true;
         //private int ratings;
+
+
+        //Recall to fix the visibility of your attributes in your GameController, some of the attributes
+        // (input and totalRent) are not private. Also, consider adding Constructors to your controllers as
+        // a way to initialize the variable.
 
         // Super class constructor:
 

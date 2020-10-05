@@ -81,6 +81,11 @@ public class ControllerManager {
         }
     }
 
+    //Your implementation of the net salary is not what we asked. The calculation should be based on an employee,
+    // and currently when executing the menu, your program asks for a name and the number of hours a year.
+    // The specification says: “...employee using their gross salary as a reference.” You are using an arbitrary
+    // hourly salary as a basis. You should have asked to retrieve a registered employee and calculate their net
+    // salary instead.
 
     public void employeeNetSalary() {
 
@@ -102,6 +107,12 @@ public class ControllerManager {
 
     }
 
+
+    //You EmployeeController has many “magic numbers” for gross pay and age (when calculating bonuses) on lines 105 and
+    // 122-127. I suggest using constants instead. Also with the printing of the message of the gross salary (line 106),
+    // you should use the constant instead of the hardcoded value 100,000. What if tomorrow we change that threshold to
+    // 500,000 how would that affect your printing message in the current situation?
+    
     public void employeeBonus() {
 
         double age = Scan.readInt("What is the employee's age?  "); // it will come directly from getAge method.

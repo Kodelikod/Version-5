@@ -7,6 +7,10 @@ import View.ViewMain;
 import View.ViewManager;
 import java.text.ParseException;
 
+//Some of your methods were not well indented, I recommend being careful when formatting your code.
+// It makes it much easier to read.
+
+
 public class Main {
 
     public static void main(String[] args) throws ParseException {

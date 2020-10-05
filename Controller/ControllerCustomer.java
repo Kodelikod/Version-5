@@ -10,6 +10,10 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+//You can also simplify your ID matching on controllers. Notice that you often do: list.get(i).getID() == id.
+// Since you do that very often, you can create a method inside each object that has an id. This method would be
+// named hasSameID( ID ) or matchID(id) and returns a boolean. Which would make your if statements much shorter to:
+// list.get(i).hasSameID( ID ).
 
 public class ControllerCustomer {
 
@@ -67,6 +71,11 @@ public class ControllerCustomer {
  //    }
  //}
 
+    //Notice that in some parts you have for loops with sentinel variables to break the for loops.
+    // In this case its best you use a while loop with an iterator to the collection. Your while
+    //   condition will check if the iterator.hasNext() and if the object was found based on the
+    //   matching ID. Currently it’s a bit hard to read your for loops (e.g., line 81 of ControllerGame).
+
     //Method for finding dailyRentFee in a game from arraylist in Game.
     public ModelGame findGameById() {
         int id = Scan.readInt("Enter the ID of the game you wish to return:");  // Read user input of id
@@ -79,6 +88,10 @@ public class ControllerCustomer {
         return null; // varför null och inte " att det inte finns i systememt. "
     }
 
+
+    //For the date, try using the LocalDate library in Java. The Date library is difficult to use and was
+    // later replaced by LocalDate in newer versions of Java since LocalDate has an implementation that
+    // is easier to use.
 
     //Method for calculating how many days the customer rented a game. Private because this is not used in main.
     private long getDaysBetween() throws ParseException {
@@ -158,6 +171,9 @@ public class ControllerCustomer {
  //          }
  //      }
  //  }
+
+
+
     public ModelGame findItemById() {
         int id = Scan.readInt("Enter the ID of the item you wish to return:");  // Read user input of id
 
