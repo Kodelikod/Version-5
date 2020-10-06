@@ -299,46 +299,51 @@ public class ControllerCustomer {
   //  //     return membership;
   //  //  String membershipStatus = input.readLine("Please enter your membership status: ");
 
-/*Upgrade membership
+//Upgrade membership
 
-    ArrayList<String> membershipList = new ArrayList<String>();
+    ArrayList<ModelCustomer> membershipList = new ArrayList<ModelCustomer>();
 
     public void upgradeMembership() {
         int userID = Scan.readInt("Please enter your customer ID:");
         ModelCustomer customer = controllerEmployee.findCustomerById(userID);
 
         if (customer.getMembership().equals("regular")) {
-            membershipList.add(customer + "silver");
+            membershipList.add(customer);
             System.out.println("You have now applied for a Silver membership.");
         } else if (customer.getMembership().equals("silver")){
-            membershipList.add(customer + "gold");
+            membershipList.add(customer);
             System.out.println("You have now applied for a Gold membership.");
         } else if (customer.getMembership().equals("gold")){
-            membershipList.add(customer + "platinum");
+            membershipList.add(customer);
             System.out.println("You have now applied for a Platinum membership");
         } else {
             System.out.println("You can't upgrade your membership.");
         }
     }
 
-        public void assignMembership() {
-             for (String i: membershipList) {
-                System.out.println(i); // shows the list of customers applying for upgraded membership, add toString
-                 int userId = Scan.readInt("Enter a customer ID to manage membership:");
-                 String request = Scan.readLine("Do you approve the membership request? Enter yes or no:");
-                      if (request.toLowerCase().equals("yes")) {
-                        customer.setMembership();
-                  } else if (request.toLowerCase().equals("no")) {
-                       membershipList.remove();
-                          System.out.println("You have declined the membership request");
-                      } else {
-                          System.out.println("Invalid input, please try again");
-                          // Go back to employee menu ?
-                      }
-
+    public void assignMembership(){
+        for (ModelCustomer i : membershipList) {
+            System.out.println("You are currently managing the membership of" + i.toString());
+            String request = Scan.readLine("Enter 'yes' to approve or 'no' to decline:");
+            if (request.toLowerCase().equals("yes")) {
+                if (i.getMembership().equals("regular")) {
+                    i.setMembership("silver");
+                } else if (i.getMembership().equals("silver")) {
+                    i.setMembership("gold");
+                } else if (i.getMembership().equals("gold")) {
+                    i.setMembership("platinum");
+                }
+            } else if (request.toLowerCase().equals("no")) {
+                membershipList.remove(i);
+                System.out.println("You have declined the membership request");
+            } else {
+                System.out.println("Invalid input");
             }
-        } */
+        }
+
+    }
 }
+
 
 
 
