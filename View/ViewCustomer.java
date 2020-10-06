@@ -35,7 +35,7 @@ public class ViewCustomer {
                         controllerCustomer.returnGame(null);
                     } else if (returnItem == 2){
                         controllerCustomer.returnGame(null);
-                     } else {
+                    } else {
                     System.out.println("Invalid input, please try again.");
                     customerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
                     }

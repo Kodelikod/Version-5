@@ -96,13 +96,15 @@ public class ControllerManager {
 
         double hPayRate = Scan.readDouble("Please enter hourly pay rate SEK:");
 
+        final double TAX_RATE = 0.7;
+        final int GROSS_PAY = 100000;
         double grossPay = hPayRate * hPerYear;
-        double netSalaryOver100 = (grossPay * (0.7));
+        double netSalaryOver100 = (grossPay * (TAX_RATE));
 
         if (grossPay <= 100000) {
-            System.out.println("Gross Pay is less than 100.000 SEK per year, therefore the Net Salary is: " + grossPay + " SEK");
+            System.out.println("Gross Pay is less than" + GROSS_PAY + " SEK per year, therefore the Net Salary is: " + grossPay + " SEK");
         } else {
-            System.out.println("Gross Pay is more than 100.000 SEK per year and the Net Salary is: " + (netSalaryOver100) + " SEK");
+            System.out.println("Gross Pay is more than" + GROSS_PAY + " SEK per year and the Net Salary is: " + (netSalaryOver100) + " SEK");
         }
 
     }
@@ -115,17 +117,20 @@ public class ControllerManager {
     
     public void employeeBonus() {
 
-        double age = Scan.readInt("What is the employee's age?  "); // it will come directly from getAge method.
-        int bonusPac1 = 4000;
-        int bonusPac2 = 6000;
-        int bonusPac3 = 7500;
+        final int AGE_1 = 22;
+        final int AGE_2 = 30;
+        final int BONUS_PAC_1 = 4000;
+        final int BONUS_PAC_2 = 6000;
+        final int BONUS_PAC_3 = 7500;
 
-        if (age < 22) {
-            System.out.println("The employee's bonus salary is " + bonusPac1 + " SEK.");
-        } else if (age >= 22 && age <= 30) {
-            System.out.println("The employee's bonus salary is " + bonusPac2 + " SEK.");
+        double age = Scan.readInt("What is the employee's age?  "); // it will come directly from getAge method.
+
+        if (age < AGE_1) {
+            System.out.println("The employee's bonus salary is " + BONUS_PAC_1 + " SEK.");
+        } else if (age >= AGE_1 && age <= AGE_2) {
+            System.out.println("The employee's bonus salary is " + BONUS_PAC_2 + " SEK.");
         } else {
-            System.out.println("The employee's bonus salary is " + bonusPac3 + " SEK.");
+            System.out.println("The employee's bonus salary is " + BONUS_PAC_3 + " SEK.");
         }
     }
 

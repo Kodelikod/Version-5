@@ -15,36 +15,36 @@ public class ViewEmployee {
             String password = Scan.readLine("Please insert your password: ");
 
             if(password.equals("password123")){
-                System.out.println("Employee Screen - Type one of the options below:");
-                System.out.println(
-                        "1. Register a game"+"\n"+
-                                "2. Remove a game"+"\n"+
-                                "3. Register a customer"+"\n"+
-                                "4. Remove a customer"+"\n"+
-                                "5. Show total rent profit"+"\n" +
-                                "6. View all games"+"\n"+
-                                "7. Return to Main Menu");
-                //maybe add message of current amount of membership requests, and add an option to view them?
 
-                int employeeOptionDigit = Scan.ScanInt();
+                int inputEmployeeMenu = Scan.readInt("Employee Screen - Type one of the options below:" +
+                        System.lineSeparator() + "1. Register a game" + System.lineSeparator() + "2. Register an song album" +
+                        System.lineSeparator() + "3. Remove item" + System.lineSeparator() + "4. Register customer"+
+                        System.lineSeparator() + "5. Assign and modify membership" + System.lineSeparator() + "6. Remove customer" +
+                        System.lineSeparator() + "7. Show total rent profit" + System.lineSeparator() +
+                        "8. View all items" + "9. Return to Main menu");
 
-                switch (employeeOptionDigit) {
+                switch (inputEmployeeMenu) {
                     case 1: controllerEmployee.registerGame();
                     break;
-                    case 2: controllerEmployee.removeGame();
+                    case 2: ControllerEmployee.registerAlbum();
                     break;
-                    case 3: controllerEmployee.registerCustomer();
+                    case 3: controllerEmployee.removeGame(); // Change to remove item
                     break;
-                    case 4: controllerEmployee.removeCustomer();
+                    case 4: controllerEmployee.registerCustomer();
                     break;
-                    case 5: controllerEmployee.printTotalRentProfit();
+                    case 5: controllerEmployee.assignMembership();
                     break;
-                    case 6: controllerEmployee.viewGameList();
+                    case 6: controllerEmployee.removeCustomer();
                     break;
-                    case 7: viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
+                    case 7: controllerEmployee.printTotalRentProfit();
+                        break;
+                    case 8: controllerEmployee.viewGameList(); // Change to items list
+                        break;
+                    case 9: viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
                     break;
                     default: System.out.println("Your inserted option's number is not valid, please insert " +
-                            "a number between 1 - 7.");
+                            "a number between 1 - 9.");
+
                 }
 
             }else {
