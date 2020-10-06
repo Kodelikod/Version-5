@@ -42,7 +42,7 @@ public class ViewCustomer {
                 break;
 
                  case 3:
-                     //ControllerCustomer.upgradeMembership();
+                     controllerCustomer.upgradeMembership();
                  break;
 
                 case 4:
@@ -53,7 +53,7 @@ public class ViewCustomer {
                     //Show sorted items
 
                 case 6:
-                    //ViewMain.mainMenu();
+                    viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
                 break;
 
                 default:
