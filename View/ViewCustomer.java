@@ -3,10 +3,8 @@ import Controller.ControllerCustomer;
 import Controller.ControllerEmployee;
 import Controller.ControllerManager;
 import Controller.Scan;
-
-import java.sql.SQLOutput;
 import java.text.ParseException;
-import java.util.Scanner;
+
 
 public class ViewCustomer {
 
