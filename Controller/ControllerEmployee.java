@@ -228,9 +228,10 @@ public class ControllerEmployee {
             if (album.getId() == id) {
                 return album;
             }
-        }
         return null;
     }
+
+
 
     //method to find customer by userID
     public ModelCustomer findCustomerById(int userId){
