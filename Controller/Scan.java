@@ -4,18 +4,21 @@ import java.util.Scanner;
 
 public class Scan {
 
+
     static Scanner scan = new Scanner(System.in);
+    public static final String EOL = System.lineSeparator();
+
 
     // Methods for reading input without printing
-    public static String Scan() {
+    public static String scan() {
         return scan.next();
     }
 
-    public static String ScanLine() {
+    public static String scanLine() {
         return scan.nextLine();
     }
 
-    public static int ScanInt() {
+    public static int scanInt() {
         return scan.nextInt();
     }
 
@@ -24,28 +27,37 @@ public class Scan {
     }
 
     public static long ScanLong() {
-        return scan.nextLong();
+        long aLong = scan.nextLong();
+        scan.nextLine();
+        return aLong;
     }
 
     // Method for reading user input and printing at the same time
     public static String readLine(String output) {
         System.out.print(output);
-        return scan.nextLine();
+        String line = scan.nextLine();
+        return line;
     }
 
     public static int readInt(String output) {
-        System.out.println(output);  //shouldn't there be a nextLine after nextInt bc if user input an int and naturally presses enter and all that?
-        return scan.nextInt();
+        System.out.println(output);
+        int anInt = scan.nextInt();
+        scan.nextLine();
+        return anInt;
     }
 
     public static double readDouble(String output) {
         System.out.println(output);
-        return scan.nextDouble();
+        double aDouble = scan.nextDouble();
+        scan.nextLine();
+        return aDouble;
     }
 
-    public static String EOL(){ //END OF LINE separator
-        return System.lineSeparator();
+    public static void print(String output){
+        System.out.println(output);
+         // WHAT I*T DO
     }
+
 
     public static void closeScanner() {
         scan.close();

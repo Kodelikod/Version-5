@@ -29,7 +29,7 @@ public class ViewMain {
                 System.out.println ("3. Enter C for Customer");
                 System.out.println ("4. Enter X to exit system");
 
-                String inputMainMenu = Scan.ScanLine();
+                String inputMainMenu = Scan.scanLine();
 
 
                 switch (inputMainMenu.toUpperCase().trim()) {

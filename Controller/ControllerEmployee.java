@@ -16,7 +16,7 @@ public class ControllerEmployee {
     private ArrayList<ModelSong> newSongAlbum = new ArrayList<>();
     private ArrayList<ModelCustomer> allCustomers = new ArrayList<>();
     private ArrayList<ModelCustomer> membershipQueue = new ArrayList<>(); // create setters & getters
-    private ModelCustomer newCustomer = new ModelCustomer("", 0);
+    private ModelCustomer newCustomer = new ModelCustomer("", 0, 0, 0, 0);
     private ModelGame newGame = new ModelGame(0,"","",0,true);
     private ModelSong newSong = new ModelSong("",0);
     private ModelAlbum newAlbum = new ModelAlbum(0,"","",0,true,"","",0,newSong);
