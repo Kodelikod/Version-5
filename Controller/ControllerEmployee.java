@@ -224,7 +224,7 @@ public class ControllerEmployee {
     public ModelAlbum findAlbumById() {
         int id = Scan.readInt("Enter the ID of the album you wish to return:");  // Read user input of id
 
-        for (ModelAlbum album : this.allAlbum) {
+        for (ModelAlbum album : this.allAlbum)
             if (album.getId() == id) {
                 return album;
             }
@@ -242,13 +242,7 @@ public class ControllerEmployee {
         }
         return null;
     }
-
-// Method for managing upgraded membership requests
-    //public void manageMembership() { creating an arraylist with customer in line
-        //viewCustomerList();
-
-
-    }
+}
 
 
 

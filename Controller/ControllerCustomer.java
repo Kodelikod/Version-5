@@ -1,7 +1,10 @@
 package Controller;
-import Model.*;
-import Controller.*;
-import View.ViewCustomer;
+
+import Model.ModelAlbum;
+import Model.ModelCustomer;
+import Model.ModelGame;
+import Model.ModelSuperItem;
+import View.ViewMain;
 import Controller.Scan;
 
 import java.lang.reflect.Array;
@@ -9,7 +12,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 //You can also simplify your ID matching on controllers. Notice that you often do: list.get(i).getID() == id.
@@ -330,6 +332,12 @@ public class ControllerCustomer {
   //  //  String membershipStatus = input.readLine("Please enter your membership status: ");
 
 //Upgrade membership
+
+    ArrayList<ModelCustomer> membershipList = new ArrayList<ModelCustomer>();
+
+    public void upgradeMembership() {
+        int userID = Scan.readInt("Please enter your customer ID:");
+        ModelCustomer customer = controllerEmployee.findCustomerById(userID);
  //   public void upgradeMembership() {
  //       int userID = Scan.readInt("Please enter your customer ID:");
  //       ModelCustomer customer = controllerEmployee.findCustomerById(userID);
@@ -355,6 +363,17 @@ public class ControllerCustomer {
         String message;
         boolean targetId = false;
 
+        if (customer.getMembership().equals("regular")) {
+            membershipList.add(customer);
+            System.out.println("You have now applied for a Silver membership.");
+        } else if (customer.getMembership().equals("silver")){
+            membershipList.add(customer);
+            System.out.println("You have now applied for a Gold membership.");
+        } else if (customer.getMembership().equals("gold")){
+            membershipList.add(customer);
+            System.out.println("You have now applied for a Platinum membership");
+        } else {
+            System.out.println("You can't upgrade your membership.");
         for (int i = 0; i < allCustomers.size() && !targetId; i++) {
             if (allCustomers.get(i).getUserId() == recId) {
                 Scan.scanLine(); //this is necessary!!!! DONT REMOVE bc the program ends without it
@@ -403,6 +422,28 @@ public class ControllerCustomer {
         }
     }
 
+    public void assignMembership(){
+        for (ModelCustomer i : membershipList) {
+            System.out.println("You are currently managing the membership of" + i.toString());
+            String request = Scan.readLine("Enter 'yes' to approve or 'no' to decline:");
+            if (request.toLowerCase().equals("yes")) {
+                if (i.getMembership().equals("regular")) {
+                    i.setMembership("silver");
+                } else if (i.getMembership().equals("silver")) {
+                    i.setMembership("gold");
+                } else if (i.getMembership().equals("gold")) {
+                    i.setMembership("platinum");
+                }
+            } else if (request.toLowerCase().equals("no")) {
+                membershipList.remove(i);
+                System.out.println("You have declined the membership request");
+            } else {
+                System.out.println("Invalid input");
+            }
+        }
+
+    }
+
     public void viewMyInbox(int userId){
 
         int listLine = 1;
@@ -432,6 +473,7 @@ public class ControllerCustomer {
     }
 
 }
+
 
 
 

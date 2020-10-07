@@ -3,35 +3,62 @@ import Controller.ControllerCustomer;
 import Controller.ControllerEmployee;
 import Controller.ControllerManager;
 import Controller.Scan;
-
 import java.text.ParseException;
-import java.util.Scanner;
+
 
 public class ViewCustomer {
 
         public void customerMenu(ControllerEmployee controllerEmployee, ControllerManager controllerManager,
                                  ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
-            //change customer menu so that first options are login and view selection?? and return to main menu of course
-                System.out.println("Customer Screen - Type one of the options below:");
-                System.out.println("1. Rent a game");
-                System.out.println("2. Return a game");
-                System.out.println("3. Return to Main Menu");
-                // on first page after login options should be view return rent review etc
+        int inputCustomerMenu = Scan.readInt("Customer Screen - Type one of the options below:" +
+                System.lineSeparator() + "1. Rent an item" + System.lineSeparator() + "2. Return an item" +
+                System.lineSeparator() + "3. Upgrade membership" + System.lineSeparator() + "4. Search games and songs"+
+                System.lineSeparator() + "5. View sorted items" + System.lineSeparator() + "6. Return to Main Menu");
 
-                int userOption = Scan.readInt(null);
+            switch (inputCustomerMenu) {
+                case 1:
+                    int chooseItem = Scan.readInt("Press 1 for Game or press 2 for Album"); //
+                    if (chooseItem == 1){
+                        controllerCustomer.rentItem(null);
+                    } else if (chooseItem == 2) {
+                        controllerCustomer.rentItem(null);
+                    } else {
+                    System.out.println("Invalid input, please try again.");
+                    customerMenu(controllerEmployee,controllerManager, controllerCustomer, viewMain);
+                    }
+                break;
 
-                if (userOption == 1) { //change to switch bc this will be more than 3 menu options
-                    controllerCustomer.rentItem(null); //create reference for customer
-                } else if (userOption == 2) {
-                    controllerCustomer.returnGame(null); //create reference for customer instead of null
-                } else if (userOption == 3) {
+                case 2:
+                    int returnItem = Scan.readInt("Press 1 for return Game or press 2 for return Album");
+                    if (returnItem == 1){
+                        controllerCustomer.returnGame(null);
+                    } else if (returnItem == 2){
+                        controllerCustomer.returnGame(null);
+                    } else {
+                    System.out.println("Invalid input, please try again.");
+                    customerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
+                    }
+                break;
+
+                 case 3:
+                     controllerCustomer.upgradeMembership();
+                 break;
+
+                case 4:
+                    //Method search games and songs
+                break;
+
+                case 5:
+                    //Show sorted items
+
+                case 6:
                     viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
-                } else {
-                    System.out.println("Invalid input.");
-                }
-            }
+                break;
 
-
-
+                default:
+                    System.out.println("Invalid input, please try again.");
+                break;
         }
+    }
+}
