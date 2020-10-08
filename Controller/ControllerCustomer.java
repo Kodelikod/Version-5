@@ -346,24 +346,7 @@ public class ControllerCustomer {
     public void upgradeMembership() {
         int userID = Scan.readInt("Please enter your customer ID:");
         ModelCustomer customer = controllerEmployee.findCustomerById(userID);
-        //   public void upgradeMembership() {
-        //       int userID = Scan.readInt("Please enter your customer ID:");
-        //       ModelCustomer customer = controllerEmployee.findCustomerById(userID);
-        //
-        //       if (customer.getMembership().equals("regular")) {
-        //           // add to list for silver membership
-        //           System.out.println("You have now applied for a Silver membership.");
-        //       } else if (customer.getMembership().equals("silver")){
-        //           // add to list for gold membership
-        //           System.out.println("You have now applied for a Gold membership.");
-        //       } else if (customer.getMembership().equals("gold")){
-        //           // add to list for platinum membership
-        //           System.out.println("You have now applied for a Platinum membership");
-        //       } else {
-        //           System.out.println("You can't upgrade your membership.");
-        //       }
-        //   }
-
+        
         if (customer.getMembership().equals("regular")) {
             membershipList.add(customer);
             System.out.println("You have now applied for a Silver membership.");
