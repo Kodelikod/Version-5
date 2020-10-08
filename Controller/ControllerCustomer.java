@@ -1,10 +1,7 @@
 package Controller;
 
 import Model.*;
-import View.ViewMain;
-import Controller.Scan;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -127,31 +124,36 @@ public class ControllerCustomer {
     }
 
     // Method for calculating total rent, used for calculating rent profit
-//    public void returnGame(ModelCustomer customer) throws ParseException { //Parse is used in this method to convert a string to long
-//        long days = getDaysBetween();
-//
-//        ModelGame game = findGameById();
-//        game.setAvailable(true); //update game status
-//
-//        customer.setRentingNow(-1); //update renting now
-//        customer.setCredits( +customer.credits(customer.getMembership())); //update customers credit status
-//
-//        totalRent = days * game.getDailyRentFee();
-//
-//        if (customer.getCredits() >= 5){
-//            totalRent = 0;
-//            customer.setCredits(-5);
-//            System.out.println("Congratulations! You have enough credits to rent this item for free!");
-//
-//        } else {
-//            totalRent = totalRent + (days * game.getDailyRentFee()) * (customer.discount(customer.getMembership())); //hard to read?
-//            System.out.println("You must pay: " + totalRent + "SEK");
-//
-//        }
-//
-//    }
-//
-//    ///////////////////// Albums /////////////////////
+    public void returnGame(ModelCustomer customer) throws ParseException { //Parse is used in this method to convert a string to long
+        long days = getDaysBetween();
+
+        ModelGame game = findGameById(); // ändra till itemslist
+        game.setAvailable(true); //update game status
+
+        String answer = Scan.readLine("Would you like to rate the item? Please enter Yes or No");
+
+        if (answer.equals("Yes") {get(i).setRatings)}
+
+
+        customer.setRentingNow(-1); //update renting now
+        customer.setCredits( +customer.credits(customer.getMembership())); //update customers credit status
+
+        totalRent = days * game.getDailyRentFee();
+
+        if (customer.getCredits() >= 5){ //skall det vara 5 eller 6
+            totalRent = 0;
+            customer.setCredits(-5);
+            System.out.println("Congratulations! You have enough credits to rent this item for free!");
+
+        } else {
+            totalRent = totalRent + (days * game.getDailyRentFee()) * (customer.discount(customer.getMembership())); //hard to read?
+            System.out.println("You must pay: " + totalRent + "SEK");
+
+        }
+
+    }
+
+    ///////////////////// Albums /////////////////////
 
     public void viewAlbumList() {
         for (int i = 0; i < getAllAlbum().size(); i++) {
@@ -478,8 +480,15 @@ public class ControllerCustomer {
                 System.out.println("You have declined the membership request");
             } else {
                 System.out.println("Invalid input");
+
             }
         }
 
     }
         }
+
+
+
+
+
+

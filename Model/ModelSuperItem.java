@@ -14,7 +14,7 @@ public class ModelSuperItem {
         private String genre;
         private double dailyRentFee;
         private boolean available = true;
-        //private int ratings;
+        private int ratings = 0 ;
 
 
         //Recall to fix the visibility of your attributes in your GameController, some of the attributes
@@ -23,12 +23,13 @@ public class ModelSuperItem {
 
         // Super class constructor:
 
-        public ModelSuperItem(int id, String title, String genre, double dailyRentFee, boolean available) {
+        public ModelSuperItem(int id, String title, String genre, double dailyRentFee, boolean available, int ratings) {
             Id = id;
             this.title = title;
             this.genre = genre;
             this.dailyRentFee = dailyRentFee;
             this.available = available;
+            this.ratings = ratings;
         }
         // Super class Setters && Getters:
 
@@ -42,6 +43,29 @@ public class ModelSuperItem {
         public void setDailyRentFee(double dailyRentFee) { this.dailyRentFee = dailyRentFee; }
         public boolean getAvailable() { return available; }
         public void setAvailable(boolean available) { this.available = available; }
+        public int getRatings() {return ratings;}
+        public void setRatings (int ratings) {this.ratings = ratings;}
+
+        public void retrieveAverageRating (){
+
+            public int ratings (String ratings){
+                if(this.getMembership().equals("silver")){
+                    return 1;
+
+                } else if(this.getMembership().equals("gold")){
+                    return 2;
+
+                } else if(this.getMembership().equals("platinum")){
+                    return 3;
+
+                } else {
+                    return 0;
+
+                }
+            }
+
+        }
+
 
         // Super class toString:
 
@@ -53,6 +77,7 @@ public class ModelSuperItem {
                     ", genre='" + genre + '\'' +
                     ", dailyRentFee=" + dailyRentFee +
                     ", available=" + available +
+                    ", ratings =" + getRatings() +
                     '}';
         }
 
