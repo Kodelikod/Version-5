@@ -12,39 +12,46 @@ public class ViewManager{
                             ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
 
-
-
         String passwordM = Scan.readLine("Please enter your password:");
 
-        if (passwordM.equals("admin1234")) {
-            System.out.println("Manager Screen - Type one of the options below:");
-            System.out.println("1. Add an employee");
-            System.out.println("2. Remove an employee");
-            System.out.println("3. View all employees");
-            System.out.println("4. Calculate employee net salary");
-            System.out.println("5. Calculate employee salary bonus");
-            System.out.println("6. Return to Main Menu");
 
-            int optionM = Scan.ScanInt();
-            if (optionM == 1) {
+        if (passwordM.equals("admin1234")) {
+
+            int inputManagerMenu = Scan.readInt("Manager Screen - Type one of the options below:" +
+                System.lineSeparator() + "1. Add an employee" + System.lineSeparator() + "2. Remove an employee" +
+                System.lineSeparator() + "3. View all employees" + System.lineSeparator() +
+                "4. Calculate employee net salary"+ System.lineSeparator() + "5. Calculate employee salary bonus" +
+                System.lineSeparator() + "6. Return to Main Menu");
+
+        switch (inputManagerMenu) {
+            case 1:
                 controllerManager.registerEmployee();
-            } else if (optionM == 2) {
+                break;
+            case 2:
                 controllerManager.removeEmployee();
-            } else if (optionM == 3) {
+                break;
+            case 3:
                 controllerManager.viewEmployeeList();
-            } else if (optionM == 4) {
+                break;
+            case 4:
                 controllerManager.employeeNetSalary();
-            } else if (optionM == 5) {
+                break;
+            case 5:
                 controllerManager.employeeBonus();
-            } else if (optionM == 6) {
+
+            case 6:
                 viewMain.mainMenu(controllerEmployee, controllerManager, controllerCustomer);
-            } else {
-                System.out.println("Invalid input, please try again");
+                break;
+
+            default:
+                System.out.println("Invalid input, please try again.");
                 managerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
-            }
-        } else {
-            System.out.println("Invalid password");
+                break;
         }
+        } else {
+        System.out.println("Invalid Password");
+        viewMain.mainMenu(controllerEmployee,controllerManager,controllerCustomer);
+
     }
 }
 

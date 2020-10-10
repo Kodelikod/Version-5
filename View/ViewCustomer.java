@@ -3,6 +3,8 @@ import Controller.ControllerCustomer;
 import Controller.ControllerEmployee;
 import Controller.ControllerManager;
 import Controller.Scan;
+import Model.ModelSuperItem;
+
 import java.text.ParseException;
 
 
@@ -11,6 +13,7 @@ public class ViewCustomer {
         public void customerMenu(ControllerEmployee controllerEmployee, ControllerManager controllerManager,
                                  ControllerCustomer controllerCustomer, ViewMain viewMain) throws ParseException {
 
+            // CREATE PASSWORD Skriv in ID & Lösenord
         int inputCustomerMenu = Scan.readInt("Customer Screen - Type one of the options below:" +
                 System.lineSeparator() + "1. Rent an item" + System.lineSeparator() + "2. Return an item" +
                 System.lineSeparator() + "3. Upgrade membership" + System.lineSeparator() + "4. Search games and songs"+
@@ -30,23 +33,24 @@ public class ViewCustomer {
                 break;
 
                 case 2:
-                    int returnItem = Scan.readInt("Press 1 for return Game or press 2 for return Album");
-                    if (returnItem == 1){
-                        controllerCustomer.returnGame(null);
-                    } else if (returnItem == 2){
-                        controllerCustomer.returnGame(null);
-                    } else {
-                    System.out.println("Invalid input, please try again.");
-                    customerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
-                    }
+                    controllerCustomer.returnItem(id); // id kommer ifrån customer id som de skall lägga in när de loggar in.
                 break;
 
                  case 3:
-                     controllerCustomer.upgradeMembership();
+                     controllerCustomer.upgradeMembership(id); // ändra i metod så att id följer med och inte behöver skriva två ggr?
                  break;
 
                 case 4:
-                    //Method search games and songs
+                    int userOption = Scan.readInt("Enter 1 for search for a game or enter 2 for search for an Album");
+                    if (userOption == 1) {
+                        controllerCustomer.showOptionsGame();
+                    } else if (userOption == 2){
+                        controllerCustomer.showOptionsAlbum();
+                    } else {
+                        System.out.println("Invalid input, please try again.");
+                        customerMenu(controllerEmployee, controllerManager, controllerCustomer, viewMain);
+                    }
+
                 break;
 
                 case 5:

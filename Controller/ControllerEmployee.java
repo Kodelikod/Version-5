@@ -131,7 +131,7 @@ public class ControllerEmployee {
         String genre = Scan.readLine("Genre:");
         double dailyRentFee = Scan.readDouble("Daily Rent Fee (SEK): ");//assigns ID to the number of the arraylist size
         // + 1, and adds it to ArrayList ids
-        allGames.add(newGame);
+        allGames.add(newGame)
         //allItems.add(allGames);
         System.out.println("You have successfully added:" + "\n" + newGame.toString());
 
@@ -244,6 +244,25 @@ public class ControllerEmployee {
         return null;
     }
 }
+
+    //  public void askForMembershipStatus () { //fråga om id och ta upp vilket membership kunden har
+    //      int userId = Scan.readInt("Please enter your ID:");
+    //
+    //      for (int i = 0; i < customerList.size(); i++){ // varför funkar inte länk mellan klasserna?
+    //          System.out.println (customerList.get(i).membership); // ta upp membership status för den kunden
+    //      }
+    //      System.out.println ("You have not entered your  id correctly, please try again.");
+    //      askForMembershipStatus();
+    //  }
+    //      return null;
+    //
+    //  //  for (ModelCustomer customer : this.customerList) {
+    //  //    if (customer.getMembership() == userId) {
+    //  //     return membership;
+    //  //  String membershipStatus = input.readLine("Please enter your membership status: ");
+
+
+
 
 
 
